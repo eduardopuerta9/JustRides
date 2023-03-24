@@ -10,7 +10,7 @@
 
 ### By: Eduardo Puerta
 
-#### [GitHub](https://github.com/eduardopuerta9) | [LinkedIn](https://www.linkedin.com/in/eduardo-puerta-0a7707265/) | [Trello](https://trello.com/b/SioR3Sem/just-rides) | [Component Hierarcy Diagram](https://lucid.app/lucidchart/ed4f5611-dd93-4aaf-92c9-5a263cd7c92e/edit?view_items=qZrI5zCtwf4Y&invitationId=inv_bc174fde-1014-4740-9151-e0de3b6fa132) | [ERD](https://drive.google.com/file/d/11Eo0ZEDTdXXtyZkAZFOzj4cKkKHcfA-U/view?usp=sharing)
+#### [GitHub](https://github.com/eduardopuerta9) | [LinkedIn](https://www.linkedin.com/in/eduardo-puerta-0a7707265/) | [Trello](https://trello.com/b/SioR3Sem/just-rides) | [Component Hierarchy Diagram](https://lucid.app/lucidchart/ed4f5611-dd93-4aaf-92c9-5a263cd7c92e/edit?view_items=qZrI5zCtwf4Y&invitationId=inv_bc174fde-1014-4740-9151-e0de3b6fa132) | [ERD](https://drive.google.com/file/d/11Eo0ZEDTdXXtyZkAZFOzj4cKkKHcfA-U/view?usp=sharing)
 
 ### **_Description_**
 
