@@ -17,5 +17,5 @@ router.get(
   controller.CheckSession
 )
 router.get('/:user_id/details', controller.FindUserById)
-
+router.get('/users', controller.GetAllUsers)
 module.exports = router
