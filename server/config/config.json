@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "Alejandro",
+    "password": "Colombia123",
+    "database": "just_rides",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "Alejandro",
+    "password": "Colombia123",
+    "database": "just_rides",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "Alejandro",
+    "password": "Colombia123",
+    "database": "just_rides",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
