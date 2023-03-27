@@ -1,8 +1,8 @@
-const { comment } = require('../models')
+const { Comment } = require('../models')
 
 const GetComments = async (req, res) => {
   try {
-    const comments = await comment.findAll()
+    const comments = await Comment.findAll()
     res.send(comments)
   } catch (error) {
     throw error
@@ -11,7 +11,7 @@ const GetComments = async (req, res) => {
 
 const CreateComment = async (req, res) => {
   try {
-    let comments = await comment.create({ ...req.body })
+    let comments = await Comment.create({ ...req.body })
     res.send(comments)
   } catch (error) {
     throw error
@@ -20,7 +20,7 @@ const CreateComment = async (req, res) => {
 
 const UpdateComment = async (req, res) => {
   try {
-    const comments = await comment.update(
+    const comments = await Comment.update(
       { ...req.body },
       { where: { id: req.params.comment_id }, returning: true }
     )
@@ -32,7 +32,7 @@ const UpdateComment = async (req, res) => {
 
 const DeleteComment = async (req, res) => {
   try {
-    await comment.destroy({ where: { id: req.params.comment_id } })
+    await Comment.destroy({ where: { id: req.params.comment_id } })
     res.send({
       msg: 'comment Deleted',
       payload: req.params.comment_id,
