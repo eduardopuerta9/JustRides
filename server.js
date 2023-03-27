@@ -16,6 +16,6 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/auth', AuthRouter)
 app.use('/comment', CommentRouter)
-app.use('/post', PostRouter)
+app.use('/posts', PostRouter)
 
 app.listen(PORT, () => console.log(`Server Running On Port: ${PORT}`))
