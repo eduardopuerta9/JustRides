@@ -10,10 +10,19 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       post.hasMany(models.comment, { foreignKey: 'postId' })
+      post.belongsTo(models.user, { foreignKey: 'userId' })
     }
   }
   post.init(
     {
+      userId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        }
+      },
       image: { type: DataTypes.STRING, allowNull: false },
       startLocation: { type: DataTypes.STRING, allowNull: false },
       endLocation: { type: DataTypes.STRING, allowNull: false },
