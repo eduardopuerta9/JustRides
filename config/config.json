@@ -9,14 +9,14 @@
   "test": {
     "username": "Alejandro",
     "password": "Colombia123",
-    "database": "just_rides_test",
+    "database": "just_rides_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "Alejandro",
     "password": "Colombia123",
-    "database": "just_rides_production",
+    "database": "just_rides_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
