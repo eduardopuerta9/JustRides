@@ -12,6 +12,10 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
+      userName: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       image: {
         type: Sequelize.STRING,
         allowNull: false
