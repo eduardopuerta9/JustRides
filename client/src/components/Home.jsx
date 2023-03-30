@@ -6,11 +6,11 @@ const Home = ()=> {
     <section className='startSection'>
       
       <h1 className="WelcomeMessage">Welcome to Just rides</h1>
-      <Link to={`/api/auth/register`}>
+      <Link to={`/register`}>
         
       <button className="SignUp">Sign Up</button>
       </Link>
-      <Link to={`/api/auth/login`}>
+      <Link to={`/login`}>
 
       <button className="LogIn">Log In</button>
       </Link>
