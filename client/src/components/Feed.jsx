@@ -49,7 +49,10 @@ const Feed= ({ user})=> {
         <div className='postTime'>
         <h3>{posts.Time}</h3>
         </div>
+        <div className='comments'>
     </div>
+    </div>
+
       
 
 
