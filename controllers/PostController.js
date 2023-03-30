@@ -18,6 +18,15 @@ const CreatePost = async (req, res) => {
     throw error
   }
 }
+const FindPostById = async (req, res) => {
+  try {
+    const postId = req.params.post_id
+    const post = await Post.findOne({
+      where: { id: postId }
+    })
+    res.send(post)
+  } catch (error) {}
+}
 
 const UpdatePost = async (req, res) => {
   try {
@@ -44,5 +53,6 @@ module.exports = {
   GetPosts,
   CreatePost,
   UpdatePost,
-  DeletePost
+  DeletePost,
+  FindPostById
 }

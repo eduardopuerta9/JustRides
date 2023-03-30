@@ -5,6 +5,7 @@ import { CheckSession } from './services/Auth'
 import Register from './components/Register'
 import Login from './components/Login'
 import Home from './components/Home'
+import Feed from './components/Feed'
 import Nav from './components/Nav'
 import { Routes, Route } from 'react-router-dom'
 
@@ -36,6 +37,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="feed" element={<Feed user={user} />} />
           <Route path="/register" element={<Register />}></Route>
           <Route path="/login" element={<Login setUser={setUser} />}></Route>
         </Routes>

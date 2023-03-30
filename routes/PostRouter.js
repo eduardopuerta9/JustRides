@@ -21,5 +21,5 @@ router.delete(
   middleware.verifyToken,
   controller.DeletePost
 )
-
+router.get('/:post_id/details', controller.FindPostById)
 module.exports = router
