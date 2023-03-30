@@ -3,6 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { CheckSession } from './services/Auth'
 import Register from './components/Register'
+import Login from './components/Login'
 import Home from './components/Home'
 import { Routes, Route } from 'react-router-dom'
 
@@ -34,6 +35,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/login" element={<Login setUser={setUser} />}></Route>
         </Routes>
       </main>
     </div>
