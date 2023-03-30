@@ -5,6 +5,7 @@ import { CheckSession } from './services/Auth'
 import Register from './components/Register'
 import Login from './components/Login'
 import Home from './components/Home'
+import Nav from './components/Nav'
 import { Routes, Route } from 'react-router-dom'
 
 import axios from 'axios'
@@ -31,6 +32,7 @@ function App() {
 
   return (
     <div className="App">
+      <Nav user={user} handleLogout={handleLogout} checkToken={checkToken} />
       <main>
         <Routes>
           <Route path="/" element={<Home />}></Route>
