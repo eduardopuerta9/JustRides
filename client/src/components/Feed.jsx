@@ -3,9 +3,12 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Client from '../services/api'
 import { Link } from 'react-router-dom'
+import CommentForm from './CommentForm'
 
 const Feed= ({ user})=> {
   const [posts, setPosts]= useState([])
+  const[comments, setComments]= useState([])
+  const [commentId, setCommentId] = useState(1)
   const [userName, setUserName]= useState('')
   const [loaded, setLoaded]= useState(false)
   const [userDetails, setUserDetails] = useState({})
@@ -16,6 +19,14 @@ const Feed= ({ user})=> {
     
   }
  console.log(posts)
+ const getComments = async () => {
+  let comments = await axios.get(
+    `http://localhost:3001/api/comment/${post_id}/comment`
+  )
+
+  setComments((comments.data).reverse())
+  setLoaded(false)
+}
   const getUserName = async () => {
     const userName = await axios.get(
       `http://localhost:3001/api/auth/${user.id}/details`
@@ -25,6 +36,7 @@ const Feed= ({ user})=> {
   }
   useEffect(()=> {
     getUserName()
+    getComments()
     getPostInfo()
   }, [loaded])
 
@@ -51,7 +63,49 @@ const Feed= ({ user})=> {
         </div>
         <div className='comments'>
     </div>
-    </div>
+    <div className='reviewForm'>
+    <CommentForm
+      post_id={post_id}
+      user={user}
+      userName={userName}
+      getUserName={getUserName}
+      setLoaded={setLoaded}
+    />
+  </div>
+  <div className="reviews-section">
+    {comments.map((comment) => (
+      <div key={comment.id} className="review">
+        <h3 className='name'>{comment.userName}'s Review</h3>
+        <div className='rr'>
+          <h3 className='thing actualReview'>{comment.comment}</h3>
+          
+
+
+          {/* {comment.userName === userDetails.userName && !displayUpdate && (
+            <div className="userButtons">
+              <button className="reviewButton" onClick={() => deleteReview(comment)}>
+                Delete
+              </button>
+              <button onClick={() => displayUpdateForm(comment.id)} className="reviewButton">
+                Update
+              </button>
+            </div>
+          )}
+          {displayUpdate && comment.id === commentId && (
+            <UpdateCommentForm
+              userDetails={userDetails}
+              comments={comments}
+              commentId={commentId}
+              setLoaded={setLoaded}
+              
+              comment={comment.comment}
+            />
+          )} */}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
 
       
 
