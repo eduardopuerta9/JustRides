@@ -10,7 +10,7 @@ export const GetComments = async () => {
 }
 export const CreatePost = async (data) => {
   try {
-    const res = await Client.post('post/create_posts', data)
+    const res = await Client.post('api/post', data)
     return res.data
   } catch (error) {
     throw error

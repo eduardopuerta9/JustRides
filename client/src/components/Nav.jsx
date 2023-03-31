@@ -8,6 +8,9 @@ const Nav = ({ user, handleLogout, checkToken }) => {
         <NavLink to="/feed" className="Nav-Bar link">
           FEED
         </NavLink>
+        <NavLink to="/createpost" className="Nav-Bar link">
+          CREATE POST
+        </NavLink>
         <NavLink to="/" onClick={handleLogout} className="Nav-Bar link">
           LOG OUT
         </NavLink>
@@ -41,6 +44,9 @@ const Nav = ({ user, handleLogout, checkToken }) => {
         
       </NavLink>
       <NavLink to="/login" className="Nav-Bar  link">
+       
+      </NavLink>
+      <NavLink to="/createpost" className="Nav-Bar  link">
        
       </NavLink>
     </nav>

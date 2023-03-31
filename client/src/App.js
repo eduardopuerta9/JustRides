@@ -7,12 +7,14 @@ import Login from './components/Login'
 import Home from './components/Home'
 import Feed from './components/Feed'
 import Nav from './components/Nav'
+import MakePost from './components/CreatePost'
 import { Routes, Route } from 'react-router-dom'
 
 import axios from 'axios'
 
 function App() {
   const [user, setUser] = useState(null)
+  const [userInfo, setUserInfo] = useState({})
   const [cards, setCards] = useState([])
   const [reviews, setReviews] = useState([])
 
@@ -40,6 +42,10 @@ function App() {
           <Route path="feed" element={<Feed user={user} />} />
           <Route path="/register" element={<Register />}></Route>
           <Route path="/login" element={<Login setUser={setUser} />}></Route>
+          <Route
+            path="/createpost"
+            element={<MakePost userInfo={userInfo} />}
+          ></Route>
         </Routes>
       </main>
     </div>
