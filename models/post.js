@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id'
         }
       },
-      userName: { type: DataTypes.STRING, allowNull: false },
+      userName: { type: DataTypes.STRING },
       image: { type: DataTypes.STRING, allowNull: false },
       startLocation: { type: DataTypes.STRING, allowNull: false },
       endLocation: { type: DataTypes.STRING, allowNull: false },
