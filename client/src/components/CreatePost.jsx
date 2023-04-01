@@ -36,6 +36,41 @@ const MakePost = ({userInfo})=> {
     <div className="post-form-container">
     <form onSubmit={handleSubmit} className="addPostForm">
       <div className="post-div"></div>
+      
+      <div className='jumbotron'>
+        <div className="container-fluid">
+          <h1>Find The Distance Between Two Places</h1>
+          <p>This App will help will help you calculate your traveling distance</p>
+          <form class="form-horizontal">
+            <div className="form-group">
+              <label htmlFor="startLocation" className='control-label'><i class="fa fa-dot-circle-o" aria-hidden="true"></i></label>
+              <div className="col-xs-4">
+                <input type="text" id='startLocation'  onChange={handleChange}
+        value={formValues.startLocation} placeholder='Origin' class="form-control"></input>
+
+              </div>
+            </div>
+            <div className="form-group">
+              <label htmlFor="endLocation" className='control-label'><i class="fa fa-map-marker" aria-hidden="true"></i></label>
+              <div className="col-xs-4">
+                <input type="text" id='endLocation' onChange={handleChange}
+        value={formValues.endLocation} placeholder='Destination' class="form-control"></input>
+                </div>
+            </div>
+          </form>
+          <div className="col-xs-offset-2 col-xs-10">
+            <button className='button-destination'><i class="icon-camera-retro"></i> BIKE</button>
+
+          </div>
+        </div>
+        <div className="container-fluid">
+          <div id="googleMap">
+
+          </div>
+          <div id="output"></div>
+        </div>
+      </div>
+      <div className="post-div"></div>
       <label htmlFor="image">Image</label>
       <input
         type="text"
@@ -44,43 +79,6 @@ const MakePost = ({userInfo})=> {
         value={formValues.image}
         className="post-form-image"
       ></input>
-      <div className="start-location-div"></div>
-      <label htmlFor="startLocation">Starting Location</label>
-      <input
-        type="text"
-        id="startLocation"
-        onChange={handleChange}
-        value={formValues.startLocation}
-        className="post-form-startLocation"
-      ></input>
-      <div className="end-location-div"></div>
-      <label htmlFor="endLocation">Ending Location</label>
-      <input
-        type="text"
-        id="endLocation"
-        onChange={handleChange}
-        value={formValues.endLocation}
-        className="post-form-endLocation"
-      ></input>
-      <div className="time-div"></div>
-      <label htmlFor="time">Time</label>
-      <input
-        type="text"
-        id="time"
-        onChange={handleChange}
-        value={formValues.time}
-        className="post-form-time"
-      ></input>
-      <div className="distance-div"></div>
-      <label htmlFor="distance">Distance</label>
-      <input
-        type="text"
-        id="distance"
-        onChange={handleChange}
-        value={formValues.distance}
-        className="post-form-distance"
-      ></input>
-      <div className="message-div"></div>
       <label htmlFor="message">Caption</label>
       <input
         type="text"
@@ -95,5 +93,6 @@ const MakePost = ({userInfo})=> {
   </div>
   )
 }
+<><script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBAp8bRcKT85jIeqRaPmkr9JQ-uJo5fQQQ&libraries=places'></script><script src='app.js'></script></>
 
 export default MakePost
