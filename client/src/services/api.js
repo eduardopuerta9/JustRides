@@ -11,8 +11,7 @@ Client.interceptors.request.use(
     if (token) {
       config.headers['authorization'] = `Bearer ${token}`
     }
-    console.log('TOKEN GOES HERE:')
-    console.log(config)
+
     return config
   },
   (error) => Promise.reject(error)

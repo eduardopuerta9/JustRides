@@ -8,7 +8,7 @@ const Nav = ({ user, handleLogout, checkToken }) => {
         <NavLink to="/feed" className="Nav-Bar link">
           FEED
         </NavLink>
-        <NavLink to="/createpost" className="Nav-Bar link">
+        <NavLink to="/api/post/create" className="Nav-Bar link">
           CREATE POST
         </NavLink>
         <NavLink to="/" onClick={handleLogout} className="Nav-Bar link">
@@ -30,7 +30,7 @@ const Nav = ({ user, handleLogout, checkToken }) => {
             </div>
           </NavLink>
         )}
-        {user.id != 1 && (
+        {user.id !== 1 && (
           <NavLink to="/about" className="Nav-Bar link">
             About
           </NavLink>

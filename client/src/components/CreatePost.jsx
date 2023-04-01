@@ -1,14 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import React from 'react'
-import { CreatePost } from '../services/PostServices'
+import axios from 'axios'
 
 const MakePost = ({userInfo})=> {
   const userName = userInfo.userName
   const userId= userInfo.id
 
   let navigate= useNavigate()
-  let initialState= {
+  const initialState= {
     userId: userId,
     userName: userName,
     image: '',
@@ -18,40 +17,82 @@ const MakePost = ({userInfo})=> {
     distance: '',
     message: ''
   }
-  const [formValues, setFormValues]= useState(initialState)
+  const [formValues, setFormState]= useState(initialState)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await CreatePost({
-      userId: userId,
-      userName: userName,
-      image: formValues.image,
-      startLocation: formValues.startLocation,
-      endLocation: formValues.endLocation,
-      time: formValues.time,
-      distance: formValues.distance,
-      message: formValues.message
-    })
-    setFormValues(initialState)
-    navigate ('/feed')
+
+    await axios.post('http://localhost:3001/api/post/create', formValues)
+
+    setFormState(initialState)
   }
 
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value})
+    setFormState({ ...formValues, [e.target.id]: e.target.value})
+    console.log(formValues)
   }
-  useEffect(()=> {
-
-  }, [])
 
   return (
-    <div className='create'>
-      <h1>Make a post</h1>
-      <form onSubmit={handleSubmit}>
-        <h3>Hey {userName}</h3>
-        <p>Create a post</p>
-
-      </form>
-    </div>
+    <div className="post-form-container">
+    <form onSubmit={handleSubmit} className="addPostForm">
+      <div className="post-div"></div>
+      <label htmlFor="image">Image</label>
+      <input
+        type="text"
+        id="image"
+        onChange={handleChange}
+        value={formValues.image}
+        className="post-form-image"
+      ></input>
+      <div className="start-location-div"></div>
+      <label htmlFor="startLocation">Starting Location</label>
+      <input
+        type="text"
+        id="startLocation"
+        onChange={handleChange}
+        value={formValues.startLocation}
+        className="post-form-startLocation"
+      ></input>
+      <div className="end-location-div"></div>
+      <label htmlFor="endLocation">Ending Location</label>
+      <input
+        type="text"
+        id="endLocation"
+        onChange={handleChange}
+        value={formValues.endLocation}
+        className="post-form-endLocation"
+      ></input>
+      <div className="time-div"></div>
+      <label htmlFor="time">Time</label>
+      <input
+        type="text"
+        id="time"
+        onChange={handleChange}
+        value={formValues.time}
+        className="post-form-time"
+      ></input>
+      <div className="distance-div"></div>
+      <label htmlFor="distance">Distance</label>
+      <input
+        type="text"
+        id="distance"
+        onChange={handleChange}
+        value={formValues.distance}
+        className="post-form-distance"
+      ></input>
+      <div className="message-div"></div>
+      <label htmlFor="message">Caption</label>
+      <input
+        type="text"
+        id="message"
+        onChange={handleChange}
+        value={formValues.message}
+        className="post-form-Message"
+      ></input>
+      
+      <button type="submit">Post</button>
+    </form>
+  </div>
   )
 }
 
