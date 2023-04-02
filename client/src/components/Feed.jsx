@@ -15,7 +15,7 @@ const Feed= ({ user})=> {
   let { post_id } = useParams()
   const getPostInfo = async () => {
     let res = await axios.get(`http://localhost:3001/api/post`)
-    setPosts(res.data[0])
+    setPosts(res.data)
     
   }
  console.log(posts)
@@ -29,7 +29,7 @@ const Feed= ({ user})=> {
 }
   const getUserName = async () => {
     const userName = await axios.get(
-      `http://localhost:3001/api/auth/${user.id}/details`
+      `http://localhost:3001/api/auth/${user._id}/details`
     )
     setUserName(userName.data.userName)
     setUserDetails(userName.data)

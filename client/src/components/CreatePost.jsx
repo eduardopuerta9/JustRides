@@ -1,12 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import '../App.css'
+import { Helmet } from 'react-helmet';
+
 
 const MakePost = ({userInfo})=> {
   const userName = userInfo.userName
   const userId= userInfo.id
 
-  let navigate= useNavigate()
+  
   const initialState= {
     userId: userId,
     userName: userName,
@@ -34,32 +37,36 @@ const MakePost = ({userInfo})=> {
 
   return (
     <div className="post-form-container">
-    <form onSubmit={handleSubmit} className="addPostForm">
+      <Helmet>
+        <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBFOXlP99us1ZJDtOw33VJn8qkOcQR4_NY&libraries=places'></script>
+        <script src='app.js'></script>
+      </Helmet>
+    <form onSubmit={handleSubmit} className="addPostForm"></form>
       <div className="post-div"></div>
       
       <div className='jumbotron'>
         <div className="container-fluid">
           <h1>Find The Distance Between Two Places</h1>
           <p>This App will help will help you calculate your traveling distance</p>
-          <form class="form-horizontal">
+          <form className="form-horizontal">
             <div className="form-group">
-              <label htmlFor="startLocation" className='control-label'><i class="fa fa-dot-circle-o" aria-hidden="true"></i></label>
+              <label htmlFor="startLocation" className='control-label'></label>
               <div className="col-xs-4">
                 <input type="text" id='startLocation'  onChange={handleChange}
-        value={formValues.startLocation} placeholder='Origin' class="form-control"></input>
+        value={formValues.startLocation} placeholder='Origin' ></input>
 
               </div>
             </div>
             <div className="form-group">
-              <label htmlFor="endLocation" className='control-label'><i class="fa fa-map-marker" aria-hidden="true"></i></label>
+              <label htmlFor="endLocation" className='control-label'></label>
               <div className="col-xs-4">
                 <input type="text" id='endLocation' onChange={handleChange}
-        value={formValues.endLocation} placeholder='Destination' class="form-control"></input>
+        value={formValues.endLocation} placeholder='Destination'></input>
                 </div>
             </div>
           </form>
           <div className="col-xs-offset-2 col-xs-10">
-            <button className='button-destination'><i class="icon-camera-retro"></i> BIKE</button>
+            <button className='button-destination'> BIKE</button>
 
           </div>
         </div>
@@ -67,7 +74,9 @@ const MakePost = ({userInfo})=> {
           <div id="googleMap">
 
           </div>
-          <div id="output"></div>
+          <div id="output">
+
+          </div>
         </div>
       </div>
       <div className="post-div"></div>
@@ -89,10 +98,10 @@ const MakePost = ({userInfo})=> {
       ></input>
       
       <button type="submit">Post</button>
-    </form>
   </div>
   )
 }
-<><script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBAp8bRcKT85jIeqRaPmkr9JQ-uJo5fQQQ&libraries=places'></script><script src='app.js'></script></>
+
+
 
 export default MakePost

@@ -11,6 +11,7 @@ const GetPosts = async (req, res) => {
 
 const CreatePost = async (req, res) => {
   console.log(res.locals)
+  const { userId } = req.params
   try {
     const post = await Post.create({ ...req.body })
     res.send(post)
