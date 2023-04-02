@@ -13,15 +13,17 @@ const Feed= ({ user})=> {
   const [loaded, setLoaded]= useState(false)
   const [userDetails, setUserDetails] = useState({})
   let { post_id } = useParams()
+  let {user_id}= useParams()
   const getPostInfo = async () => {
-    let res = await axios.get(`http://localhost:3001/api/post`)
-    setPosts(res.data)
+    let res = await axios.get(`http://localhost:3001/post`)
+    setPosts(res.data[0])
+
     
   }
- console.log(posts)
- const getComments = async () => {
+console.log(posts)
+const getComments = async () => {
   let comments = await axios.get(
-    `http://localhost:3001/api/comment/${post_id}/comment`
+    `http://localhost:3001/comment/${post_id}/comments`
   )
 
   setComments((comments.data).reverse())
@@ -29,7 +31,7 @@ const Feed= ({ user})=> {
 }
   const getUserName = async () => {
     const userName = await axios.get(
-      `http://localhost:3001/api/auth/${user._id}/details`
+      `http://localhost:3001/auth/${user_id}/details`
     )
     setUserName(userName.data.userName)
     setUserDetails(userName.data)
@@ -44,6 +46,7 @@ const Feed= ({ user})=> {
     <div className='Posts'>
 
         <div className='postUserName'>
+          
         <h2>{posts.userName}</h2><h3>{posts.message}</h3>
         </div>
         <div className='postImage'>

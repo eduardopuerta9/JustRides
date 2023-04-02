@@ -1,4 +1,4 @@
-const { Post } = require('../models')
+const { Post, User } = require('../models')
 
 const GetPosts = async (req, res) => {
   try {
@@ -11,9 +11,11 @@ const GetPosts = async (req, res) => {
 
 const CreatePost = async (req, res) => {
   console.log(res.locals)
-  const { userId } = req.params
   try {
-    const post = await Post.create({ ...req.body })
+    const post = await Post.create({
+      ...req.body,
+      userId: req.params.user_id
+    })
     res.send(post)
   } catch (error) {
     throw error
@@ -22,8 +24,11 @@ const CreatePost = async (req, res) => {
 const FindPostById = async (req, res) => {
   try {
     const postId = req.params.post_id
+    // const userId = req.params.user_id
     const post = await Post.findOne({
-      where: { id: postId }
+      where: { id: postId },
+      where: { userId: user_id }
+      // include: [{ model: User, where: { userId: user_id } }]
     })
     res.send(post)
   } catch (error) {}

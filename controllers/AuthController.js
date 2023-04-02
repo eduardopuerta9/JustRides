@@ -24,12 +24,13 @@ const Register = async (req, res) => {
 
 const FindUserById = async (req, res) => {
   try {
-    const userId = req.params.user_id
     const user = await User.findOne({
-      where: { id: userId }
+      userId: req.params.user_id
     })
     res.send(user)
-  } catch (error) {}
+  } catch (error) {
+    throw error
+  }
 }
 
 const Login = async (req, res) => {

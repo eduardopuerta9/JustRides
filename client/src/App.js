@@ -10,10 +10,14 @@ import Nav from './components/Nav'
 import { GetPosts } from './services/PostServices'
 import MakePost from './components/CreatePost'
 import { Routes, Route } from 'react-router-dom'
-
+import { useJsApiLoader, GoogleMap } from '@react-google-maps/api'
 import axios from 'axios'
-
+const center = { lat: 48.8584, lng: 2.2945 }
 function App() {
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+  })
+
   const [user, setUser] = useState(null)
   const [userInfo, setUserInfo] = useState({})
   const [posts, setPosts] = useState([])
@@ -48,10 +52,7 @@ function App() {
           <Route path="/feed" element={<Feed user={user} />} />
           <Route path="/register" element={<Register />}></Route>
           <Route path="/login" element={<Login setUser={setUser} />}></Route>
-          <Route
-            path="/api/post/create"
-            element={<MakePost userInfo={userInfo} />}
-          ></Route>
+          <Route path="/post/create" element={<MakePost user={user} />}></Route>
         </Routes>
       </main>
     </div>

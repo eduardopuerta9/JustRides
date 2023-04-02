@@ -3,16 +3,16 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../App.css'
 import { Helmet } from 'react-helmet';
+import { GoogleMap, useLoadScript, Marker, Autocomplete } from '@react-google-maps/api';
+import { useMemo } from 'react';
 
 
-const MakePost = ({userInfo})=> {
-  const userName = userInfo.userName
-  const userId= userInfo.id
-
-  
+const MakePost = ({ user})=> {
+  const {isLoaded} = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries:['places'],
+  })
   const initialState= {
-    userId: userId,
-    userName: userName,
     image: '',
     startLocation: '',
     endLocation: '',
@@ -25,7 +25,7 @@ const MakePost = ({userInfo})=> {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await axios.post('http://localhost:3001/api/post/create', formValues)
+    await axios.post(`http://localhost:3001/post/create`, formValues)
 
     setFormState(initialState)
   }
@@ -34,13 +34,10 @@ const MakePost = ({userInfo})=> {
     setFormState({ ...formValues, [e.target.id]: e.target.value})
     console.log(formValues)
   }
+  const [map, setMap]=useState(null)
 
   return (
     <div className="post-form-container">
-      <Helmet>
-        <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBFOXlP99us1ZJDtOw33VJn8qkOcQR4_NY&libraries=places'></script>
-        <script src='app.js'></script>
-      </Helmet>
     <form onSubmit={handleSubmit} className="addPostForm"></form>
       <div className="post-div"></div>
       
@@ -52,16 +49,21 @@ const MakePost = ({userInfo})=> {
             <div className="form-group">
               <label htmlFor="startLocation" className='control-label'></label>
               <div className="col-xs-4">
+                <Autocomplete>
                 <input type="text" id='startLocation'  onChange={handleChange}
-        value={formValues.startLocation} placeholder='Origin' ></input>
+                value={formValues.startLocation} placeholder='Origin' ></input>
+                </Autocomplete>
 
               </div>
             </div>
             <div className="form-group">
               <label htmlFor="endLocation" className='control-label'></label>
               <div className="col-xs-4">
+                <Autocomplete>
                 <input type="text" id='endLocation' onChange={handleChange}
-        value={formValues.endLocation} placeholder='Destination'></input>
+              value={formValues.endLocation} placeholder='Destination'></input>
+
+                </Autocomplete>
                 </div>
             </div>
           </form>
@@ -69,6 +71,9 @@ const MakePost = ({userInfo})=> {
             <button className='button-destination'> BIKE</button>
 
           </div>
+          <GoogleMap zoom={10} center={{lat:44, lng:-80}} mapContainerClassName="map-container"
+          onLoad={(map)=> setMap(map)}
+          ></GoogleMap>
         </div>
         <div className="container-fluid">
           <div id="googleMap">
@@ -100,7 +105,7 @@ const MakePost = ({userInfo})=> {
       <button type="submit">Post</button>
   </div>
   )
-}
+  }
 
 
 

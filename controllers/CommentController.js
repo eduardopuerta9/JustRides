@@ -11,7 +11,10 @@ const GetComments = async (req, res) => {
 
 const CreateComment = async (req, res) => {
   try {
-    let comments = await Comment.create({ ...req.body })
+    const comments = await Comment.create({
+      ...req.body,
+      postId: req.params.post_id
+    })
     res.send(comments)
   } catch (error) {
     throw error

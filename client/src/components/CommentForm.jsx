@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Client from '../services/api'
+import {CreateComment} from '../services/PostServices'
 
-
-const CommentForm = ({ post_id, user, userName, getUserName, setLoaded }) => {
-  let username = userName
+const CommentForm = ({ props, getAllPosts, posts, userName, post_id, user }) => {
   const initialState = {
     comment: '',
     userId: user.id,
@@ -15,39 +14,26 @@ const CommentForm = ({ post_id, user, userName, getUserName, setLoaded }) => {
   const [formValues, setFormValues] = useState(initialState)
 
   const handleChange = (e) => {
-    setFormValues({
-      ...formValues,
-      [e.target.id]: e.target.value,
-      [e.target.name]: e.target.value,
-      [e.target.id]: e.target.value,
-      userName: userName
-    })
-    setLoaded(false)
+    const { name, value}= e.target 
+    setFormValues((prevState) => ({
+      ...prevState,
+      [name]: value
+    }))
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const res = await Client.post(
-      `http://localhost:3001/api/comment/${post_id}/addcomment`,
-      formValues
-    )
+    const res = await axios.post(`http://localhost:3001/comment/${post_id}/addcomment`, formValues).then(()=>{})
 
-    setFormValues(res.data)
     setFormValues(initialState)
 
-    setLoaded(true)
+    getAllPosts()
   }
-
-  useEffect(() => {
-    getUserName()
-  }, [formValues])
   return (
-    <div className='formDiv'>
-      <h1>Comment!</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <textarea id="review" cols="50" rows="10" onChange={handleChange} value={formValues.comment} placeholder="Comment here..."></textarea>
           <button type="submit" className='postButton'>Post</button>
       </form>
-    </div>
+    
   )
 }
 
