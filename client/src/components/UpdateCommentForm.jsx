@@ -7,7 +7,7 @@ const UpdateCommentForm = ({
   user,
   comment,
   commentId,
-
+  getComments,
   setDisplayUpdate
 }) => {
   const initialState = {
@@ -19,25 +19,21 @@ const UpdateCommentForm = ({
   const [comments, setComments] = useState([])
   const [reviewState, setReviewState] = useState(initialState)
   const [loaded, setLoaded] = useState(false)
-  const getComments = async () => {
-    const res = await axios.get(
-      `http://localhost:3001/comment/${post_id}/comments`
-    )
-    console.log(res)
-
-    setComments(res.data)
-    console.log(post_id)
-  }
   const handleSubmit = async (e) => {
     e.preventDefault()
     await Client.put(
       `http://localhost:3001/comment/${commentId}/update`,
       reviewState
     )
+    console.log('1')
     setReviewState(initialState)
+    console.log('2')
     setLoaded(true)
+    console.log('3')
     setDisplayUpdate(false)
+    console.log('4')
     getComments()
+    console.log('5')
   }
   console.log(comments)
   const handleChange = (e) => {
@@ -52,7 +48,7 @@ const UpdateCommentForm = ({
           cols="40"
           rows="5"
           onChange={handleChange}
-          value={comment.comment}
+          value={reviewState.comment}
           placeholder="Comment here..."
         ></textarea>
         <button type="submit" onClick={handleSubmit}>
