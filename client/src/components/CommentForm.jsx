@@ -6,7 +6,7 @@ import {CreateComment} from '../services/PostServices'
 const CommentForm = ({ post_id, user, setLoaded}) => {
   const initialState = {
     userId:user.id,
-    postId:parseInt(post_id),
+    postId:post_id,
     comment: '',
     userName: user.userName,
 

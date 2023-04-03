@@ -71,15 +71,17 @@ const getComments = async () => {
       ))}
         <div className='comments'>
     </div>
+    {posts.map((post) => (
     <div className='commentForm'>
-    <CommentForm
-      post_id={post_id}
+    <CommentForm 
+      post_id={parseInt(post.id)}
       user={user}
       userName={userName}
       // getUserName={getUserName}
       setLoaded={setLoaded}
       />
-  </div>
+    </div>
+    ))}
   <div className="comments-section">
     {comments.map((comment) => (
       <div key={comment.id} className="review">
