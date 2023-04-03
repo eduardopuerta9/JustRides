@@ -22,7 +22,7 @@ const Nav = ({ user, handleLogout, checkToken }) => {
       <div>
         {user.id === 1 && (
           <NavLink to="/admincontrols" className="Nav-Bar link">
-            <div className='adminControls'>
+            <div className="adminControls">
               <span className="material-symbols-outlined" id="settings-icon">
                 settings_input_component
               </span>{' '}
@@ -30,25 +30,13 @@ const Nav = ({ user, handleLogout, checkToken }) => {
             </div>
           </NavLink>
         )}
-        {user.id !== 1 && (
-          <NavLink to="/about" className="Nav-Bar link">
-            About
-          </NavLink>
-        )}
       </div>
     </nav>
   ) : (
     <nav className="Nav-Bar">
-    
-      <NavLink to="/register" className="Nav-Bar link">
-        
-      </NavLink>
-      <NavLink to="/login" className="Nav-Bar  link">
-       
-      </NavLink>
-      <NavLink to="/createpost" className="Nav-Bar  link">
-       
-      </NavLink>
+      <NavLink to="/register" className="Nav-Bar link"></NavLink>
+      <NavLink to="/login" className="Nav-Bar  link"></NavLink>
+      <NavLink to="/createpost" className="Nav-Bar  link"></NavLink>
     </nav>
   )
 }

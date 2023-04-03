@@ -7,7 +7,7 @@ const UpdateCommentForm = ({
   user,
   comment,
   commentId,
-  setLoaded,
+
   setDisplayUpdate
 }) => {
   const initialState = {
@@ -16,44 +16,42 @@ const UpdateCommentForm = ({
     comment: '',
     userName: user.userName
   }
-
+  const [comments, setComments] = useState([])
   const [reviewState, setReviewState] = useState(initialState)
+  const [loaded, setLoaded] = useState(false)
+  const getComments = async () => {
+    const res = await axios.get(
+      `http://localhost:3001/comment/${post_id}/comments`
+    )
+    console.log(res)
 
+    setComments(res.data)
+  }
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    try {
-      const response = await fetch(
-        `http://localhost:3001/comment/${commentId}/update`,
-        {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(reviewState)
-        }
-      )
-
-      const updatedComment = await response.json()
-      setReviewState(updatedComment)
-      setLoaded(true)
-      setDisplayUpdate(false)
-    } catch (error) {
-      console.log(error)
-    }
+    await Client.put(
+      `http://localhost:3001/comment/${commentId}/update`,
+      reviewState
+    )
+    setReviewState(initialState)
+    setLoaded(true)
+    setDisplayUpdate(false)
+    getComments()
   }
+  console.log(comments)
   const handleChange = (e) => {
     setReviewState({ ...reviewState, [e.target.id]: e.target.value })
+    console.log(reviewState)
   }
   return (
     <div>
       <form onSubmit={handleSubmit} className="updateForm">
         <textarea
           id="comment"
-          cols="20"
-          rows="10"
+          cols="40"
+          rows="5"
           onChange={handleChange}
-          value={reviewState.comment}
+          value={comment.comment}
           placeholder="Comment here..."
         ></textarea>
         <button type="submit" onClick={handleSubmit}>

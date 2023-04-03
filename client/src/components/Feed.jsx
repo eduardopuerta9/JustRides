@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import Client from '../services/api'
 import { Link } from 'react-router-dom'
 import CommentForm from './CommentForm'
+import '../App.css'
 
 const Feed = ({ user }) => {
   const [posts, setPosts] = useState([])
@@ -40,10 +41,13 @@ const Feed = ({ user }) => {
         <div key={post.id}>
           <div className="postUserName">
             <h2>{post.userName}</h2>
-            <h3>{post.message}</h3>
           </div>
           <div className="postImage">
             <img src={post.image} />
+          </div>
+          <div className="postUserName">
+            <h2>{post.userName}</h2>
+            <h3>{post.message}</h3>
           </div>
           <div className="postStart">
             <h3>Starting: {post.startLocation}</h3>

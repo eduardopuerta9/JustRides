@@ -80,6 +80,7 @@ const CommentForm = ({ post_id, user }) => {
                   commentId={commentId}
                   setDisplayUpdate={setDisplayUpdate}
                   comment={comment.comment}
+                  getComments={getComments}
                 />
               )}
             </div>
@@ -89,8 +90,8 @@ const CommentForm = ({ post_id, user }) => {
       <form className="form" onSubmit={handleSubmit}>
         <textarea
           id="comment"
-          cols="20"
-          rows="10"
+          cols="90"
+          rows="3"
           onChange={handleChange}
           value={formValues.comment}
           placeholder="Comment here..."
