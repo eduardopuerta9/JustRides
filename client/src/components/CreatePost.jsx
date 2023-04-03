@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import '../App.css'
-
+import '../styles/createpost.css'
 import {
   GoogleMap,
   useLoadScript,

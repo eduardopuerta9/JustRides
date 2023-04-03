@@ -1,0 +1,121 @@
+.Posts {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.postUserName {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.postUserName h2 {
+  font-size: 16px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.postUserName img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.postImage {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.postImage img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.postStart h3,
+.postEnd h3,
+.postDistance h3,
+.postTime h3 {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.postTime h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postTime button {
+  background-color: #e53935;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.commentForm {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.commentForm textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  resize: none;
+  font-size: 14px;
+}
+
+.commentForm button {
+  background-color: #009688;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.comments {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.comments h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.comments ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.comments li {
+  display: flex;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.comments li img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comments li h4 {
+  font-size: 14px;
+  margin-left: 10px;
+  font-weight: bold;
+}

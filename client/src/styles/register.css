@@ -1,0 +1,78 @@
+.register-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 550px;
+  padding: 30px;
+  background-color: #1b1b1b;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.75);
+}
+
+.register-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.firstName-label, .lastName-label {
+  font-size: 14px;
+  color: #c7c7c7;
+}
+
+.firstName-input, .lastName-input {
+  width: 48%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #2a2a2a;
+  color: #c7c7c7;
+}
+
+.email-div, .userName-div, .password-div, .confirm {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.email-label, .userName-label, .password-label, .confirm-label {
+  font-size: 14px;
+  color: #c7c7c7;
+}
+
+.email-input, .userName-input, .password-input, .confirm-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #2a2a2a;
+  color: #c7c7c7;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #3897f0;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #38a1f0;
+}

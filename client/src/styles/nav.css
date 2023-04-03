@@ -1,0 +1,107 @@
+.Nav-Bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #242526;
+  color: white;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.link:hover {
+  opacity: 1;
+}
+
+.just-rides {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  margin-right: 0.25rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.rides {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.adminControls {
+  display: flex;
+  align-items: center;
+}
+
+#settings-icon {
+  margin-right: 0.25rem;
+  font-size: 1.5rem;
+}
+
+.admin {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.admin:hover {
+  opacity: 1;
+}
+
+/* Styles for the links when the user is not logged in */
+
+.Nav-Bar:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.Nav-Bar:last-child {
+  margin-left: auto;
+}
+
+.Nav-Bar:not(:last-child) .link {
+  margin-left: 0;
+}
+
+/* Styles for the active link */
+
+.link.active {
+  opacity: 1;
+  color: #0095f6;
+}
+
+/* Styles for the logo */
+
+.logo {
+  font-size: 2rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: white;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.logo:hover {
+  opacity: 1;
+}
+
+.logo span {
+  color: #0095f6;
+}

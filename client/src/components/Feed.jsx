@@ -5,6 +5,7 @@ import Client from '../services/api'
 import { Link } from 'react-router-dom'
 import CommentForm from './CommentForm'
 import '../App.css'
+import '../styles/feed.css'
 
 const Feed = ({ user }) => {
   const [posts, setPosts] = useState([])
