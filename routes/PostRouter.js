@@ -3,12 +3,7 @@ const controller = require('../controllers/PostController')
 const middleware = require('../middleware')
 
 router.get('/', controller.GetPosts)
-router.post(
-  '/create/:user_id',
-  middleware.stripToken,
-  middleware.verifyToken,
-  controller.CreatePost
-)
+router.post('/create/:user_id', controller.CreatePost)
 router.put(
   '/:post_id',
   middleware.stripToken,

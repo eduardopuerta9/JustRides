@@ -11,11 +11,11 @@ const GetComments = async (req, res) => {
 
 const CreateComment = async (req, res) => {
   try {
-    const comments = await Comment.create({
+    const comment = await Comment.create({
       ...req.body,
       postId: req.params.post_id
     })
-    res.send(comments)
+    res.send(comment)
   } catch (error) {
     throw error
   }
@@ -23,11 +23,11 @@ const CreateComment = async (req, res) => {
 
 const UpdateComment = async (req, res) => {
   try {
-    const comments = await Comment.update(
+    const comment = await Comment.update(
       { ...req.body },
       { where: { id: req.params.comment_id }, returning: true }
     )
-    res.send(comments)
+    res.send(comment)
   } catch (error) {
     throw error
   }

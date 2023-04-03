@@ -8,29 +8,36 @@ import { useMemo } from 'react';
 
 
 
-const MakePost = ({ userId})=> {
+const MakePost = ({ user})=> {
+  console.log(user)
   
-
+let navigate= useNavigate()
   const {isLoaded} = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries:["places"]
   })
   const initialState= {
+    
+    userName: user.userName,
+  
     image: '',
     startLocation: '',
     endLocation: '',
     time: '',
     distance: '',
+    
     message: ''
   }
   const [formValues, setFormState]= useState(initialState)
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await axios.post(`http://localhost:3001/post/create/${userId}`, formValues)
+    await axios.post(`http://localhost:3001/post/create/${user.id}`, formValues)
 
     setFormState(initialState)
+    navigate('/feed')
   }
 
   const handleChange = (e) => {
@@ -43,6 +50,10 @@ const MakePost = ({ userId})=> {
   const [duration, setDuration]=useState('')
   const originRef = useRef()
   const destinationRef = useRef()
+
+  if (directionsResponse != null && formValues.time === '' && formValues.distance === ''){
+    setFormState({...formValues, time:duration, distance:distance})
+  }
 
   async function calculateRoute (){
     if(originRef.current.value === '' || destinationRef.current.value === ''){

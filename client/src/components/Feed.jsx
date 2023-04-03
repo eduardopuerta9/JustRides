@@ -29,16 +29,9 @@ const getComments = async () => {
 
   setComments((comments.data).reverse())
   setLoaded(false)
-}
-  const getUserName = async () => {
-    const userName = await axios.get(
-      `http://localhost:3001/auth/${user_id}/details`
-    )
-    setUserName(userName.data.userName)
-    setUserDetails(userName.data)
   }
   useEffect(()=> {
-    getUserName()
+    // getUserName()
     getComments()
     getPostInfo()
   }, [loaded])
@@ -75,7 +68,7 @@ const getComments = async () => {
       post_id={post_id}
       user={user}
       userName={userName}
-      getUserName={getUserName}
+      // getUserName={getUserName}
       setLoaded={setLoaded}
       />
   </div>
