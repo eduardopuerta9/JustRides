@@ -18,6 +18,10 @@ const CommentForm = ({ post_id, user }) => {
 
     setComments(res.data)
   }
+  const deleteComment = async (comment) => {
+    await Client.delete(`http://localhost:3001/comment/${comment.id}/delete`)
+    setComments(comments.filter((c) => c.id !== comment.id))
+  }
   const [formValues, setFormState] = useState(initialState)
 
   const handleChange = (e) => {
@@ -35,6 +39,7 @@ const CommentForm = ({ post_id, user }) => {
       `http://localhost:3001/comment/addcomment/${post_id}/${user.id}`,
       formValues
     )
+    setComments([...comments, res.data])
     setFormState(res.data)
 
     setFormState(initialState)
@@ -50,6 +55,10 @@ const CommentForm = ({ post_id, user }) => {
             <h3 className="name">{comment.userName}'s Review</h3>
             <div className="rr">
               <h3 className="thing actualReview">{comment.comment}</h3>
+
+              {comment.userId === user.id && (
+                <button onClick={() => deleteComment(comment)}>Delete</button>
+              )}
             </div>
           </div>
         ))}
