@@ -5,31 +5,19 @@ import Client from '../services/api'
 import { Link } from 'react-router-dom'
 import CommentForm from './CommentForm'
 
-const Feed= ({ user})=> {
-  const [posts, setPosts]= useState([])
-  const[comments, setComments]= useState([])
+const Feed = ({ user }) => {
+  const [posts, setPosts] = useState([])
   const [commentId, setCommentId] = useState(1)
-  const [userName, setUserName]= useState('')
-  const [loaded, setLoaded]= useState(false)
+  const [userName, setUserName] = useState('')
+  const [loaded, setLoaded] = useState(false)
   const [userDetails, setUserDetails] = useState({})
   let { post_id } = useParams()
-  let {user_id}= useParams()
+  let { user_id } = useParams()
   const getPostInfo = async () => {
     const res = await axios.get(`http://localhost:3001/post`)
     setPosts(res.data)
-    
-
-    
   }
-console.log(posts)
-const getComments = async () => {
-  let comments = await axios.get(
-    `http://localhost:3001/comment/${post_id}/comments`
-  )
 
-  setComments((comments.data).reverse())
-  setLoaded(false)
-  }
   const getUserName = async () => {
     const userName = await axios.get(
       `http://localhost:3001/auth/${user.id}/details`
@@ -37,9 +25,7 @@ const getComments = async () => {
     setUserName(userName.data.userName)
     setUserDetails(userName.data)
   }
-  useEffect(()=> {
-    // getUserName()
-    getComments()
+  useEffect(() => {
     getUserName()
     getPostInfo()
   }, [loaded])
@@ -67,36 +53,19 @@ const getComments = async () => {
           <div className="postTime">
             <h3>{post.Time}</h3>
           </div>
+          <div className="commentForm">
+            <CommentForm
+              post_id={parseInt(post.id)}
+              user={user}
+              userName={userName}
+              // getUserName={getUserName}
+              setLoaded={setLoaded}
+            />
+          </div>
         </div>
       ))}
-        <div className='comments'>
+      <div className="comments"></div>
     </div>
-    {posts.map((post) => (
-    <div className='commentForm'>
-    <CommentForm 
-      post_id={parseInt(post.id)}
-      user={user}
-      userName={userName}
-      // getUserName={getUserName}
-      setLoaded={setLoaded}
-      />
-    </div>
-    ))}
-  <div className="comments-section">
-    {comments.map((comment) => (
-      <div key={comment.id} className="review">
-        <h3 className='name'>{comment.userName}'s Review</h3>
-        <div className='rr'>
-          <h3 className='thing actualReview'>{comment.comment}</h3>
-        </div>
-      </div>
-    ))}
-  </div>
-</div>
-
-      
-
-
   ) : (
     <div>
       <h1>Please Sign In!</h1>
@@ -111,6 +80,5 @@ const getComments = async () => {
       </h1>
     </div>
   )
-
 }
 export default Feed

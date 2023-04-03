@@ -12,8 +12,8 @@ const FindCommentById = async (req, res) => {
   try {
     const postId = req.params.post_id
     // const userId = req.params.user_id
-    const post = await Comment.findOne({
-      where: { id: postId }
+    const post = await Comment.findAll({
+      where: { postId: postId }
 
       // include: [{ model: User, where: { userId: user_id } }]
     })

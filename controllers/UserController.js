@@ -22,7 +22,7 @@ const GetUser = async (req, res) => {
 const GetUserByEmail = async (req, res) => {
   try {
     const email = req.params.email
-    console.log(email)
+
     let data = await User.findOne({ where: { email: email } })
     res.send(data)
   } catch (error) {
