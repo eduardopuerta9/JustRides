@@ -26,8 +26,8 @@ const FindPostById = async (req, res) => {
     const postId = req.params.post_id
     // const userId = req.params.user_id
     const post = await Post.findOne({
-      where: { id: postId },
-      where: { userId: user_id }
+      where: { id: postId }
+
       // include: [{ model: User, where: { userId: user_id } }]
     })
     res.send(post)

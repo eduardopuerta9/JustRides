@@ -10,14 +10,9 @@ import Nav from './components/Nav'
 import { GetPosts } from './services/PostServices'
 import MakePost from './components/CreatePost'
 import { Routes, Route } from 'react-router-dom'
-import { useJsApiLoader, GoogleMap } from '@react-google-maps/api'
-import axios from 'axios'
-const center = { lat: 48.8584, lng: 2.2945 }
-function App() {
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-  })
 
+import axios from 'axios'
+function App() {
   const [user, setUser] = useState(null)
   const [userInfo, setUserInfo] = useState({})
   const [posts, setPosts] = useState([])

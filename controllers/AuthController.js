@@ -24,8 +24,9 @@ const Register = async (req, res) => {
 
 const FindUserById = async (req, res) => {
   try {
+    const userId = req.params.user_id
     const user = await User.findOne({
-      userId: req.params.user_id
+      where: { id: userId }
     })
     res.send(user)
   } catch (error) {

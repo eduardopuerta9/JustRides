@@ -1,16 +1,19 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import '../App.css'
-import { Helmet } from 'react-helmet';
-import { GoogleMap, useLoadScript, Marker, Autocomplete } from '@react-google-maps/api';
+
+import { GoogleMap, useLoadScript, Marker, Autocomplete, DirectionsRenderer, useJsApiLoader } from '@react-google-maps/api';
 import { useMemo } from 'react';
 
 
-const MakePost = ({ user})=> {
-  const {isLoaded} = useLoadScript({
+
+const MakePost = ({ userId})=> {
+  
+
+  const {isLoaded} = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    libraries:['places'],
+    libraries:["places"]
   })
   const initialState= {
     image: '',
@@ -25,7 +28,7 @@ const MakePost = ({ user})=> {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await axios.post(`http://localhost:3001/post/create`, formValues)
+    await axios.post(`http://localhost:3001/post/create/${userId}`, formValues)
 
     setFormState(initialState)
   }
@@ -35,6 +38,37 @@ const MakePost = ({ user})=> {
     console.log(formValues)
   }
   const [map, setMap]=useState(null)
+  const [directionsResponse, setDirectionsResponse]=useState(null)
+  const [distance, setDistance]=useState('')
+  const [duration, setDuration]=useState('')
+  const originRef = useRef()
+  const destinationRef = useRef()
+
+  async function calculateRoute (){
+    if(originRef.current.value === '' || destinationRef.current.value === ''){
+      return
+    }
+    // eslint-disable-next-line no-undef
+    const directionsService = new google.maps.DirectionsService()
+    const results = await directionsService.route({
+      origin: originRef.current.value,
+      destination: destinationRef.current.value,
+      // eslint-disable-next-line no-undef
+      travelMode: google.maps.TravelMode.BICYCLING
+    })
+    setDirectionsResponse(results)
+    setDistance(results.routes[0].legs[0].distance.text)
+    setDuration(results.routes[0].legs[0].duration.text)
+  }
+
+  function clearRoute(){
+    setDirectionsResponse(null)
+    setDistance('')
+    setDuration('')
+    originRef.current.value=''
+    destinationRef.current.value=''
+
+  }
 
   return (
     <div className="post-form-container">
@@ -43,15 +77,31 @@ const MakePost = ({ user})=> {
       
       <div className='jumbotron'>
         <div className="container-fluid">
-          <h1>Find The Distance Between Two Places</h1>
-          <p>This App will help will help you calculate your traveling distance</p>
+          <h1>Share Your Ride!</h1>
+          
+          <label htmlFor="image">Image</label>
+      <input
+        type="text"
+        id="image"
+        onChange={handleChange}
+        value={formValues.image}
+        className="post-form-image"
+      ></input>
+          <label htmlFor="message">Caption</label>
+      <input
+        type="text"
+        id="message"
+        onChange={handleChange}
+        value={formValues.message}
+        className="post-form-Message"
+      ></input>
           <form className="form-horizontal">
             <div className="form-group">
               <label htmlFor="startLocation" className='control-label'></label>
               <div className="col-xs-4">
                 <Autocomplete>
                 <input type="text" id='startLocation'  onChange={handleChange}
-                value={formValues.startLocation} placeholder='Origin' ></input>
+                value={formValues.startLocation} placeholder='Origin' ref={originRef} ></input>
                 </Autocomplete>
 
               </div>
@@ -61,48 +111,30 @@ const MakePost = ({ user})=> {
               <div className="col-xs-4">
                 <Autocomplete>
                 <input type="text" id='endLocation' onChange={handleChange}
-              value={formValues.endLocation} placeholder='Destination'></input>
+              value={formValues.endLocation} placeholder='Destination' ref={destinationRef}></input>
 
                 </Autocomplete>
                 </div>
             </div>
           </form>
           <div className="col-xs-offset-2 col-xs-10">
-            <button className='button-destination'> BIKE</button>
+            <button className='button-destination' type='submit' onClick={calculateRoute} > BIKE</button>
 
           </div>
           <GoogleMap zoom={10} center={{lat:44, lng:-80}} mapContainerClassName="map-container"
-          onLoad={(map)=> setMap(map)}
-          ></GoogleMap>
+          onLoad={(map)=> setMap(map)}>
+          
+          {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
+          </GoogleMap>
         </div>
-        <div className="container-fluid">
-          <div id="googleMap">
-
-          </div>
-          <div id="output">
-
-          </div>
+        <div>
+          <h3>Distance: {distance}</h3>
+          <h3>Duration: {duration}</h3>
         </div>
       </div>
-      <div className="post-div"></div>
-      <label htmlFor="image">Image</label>
-      <input
-        type="text"
-        id="image"
-        onChange={handleChange}
-        value={formValues.image}
-        className="post-form-image"
-      ></input>
-      <label htmlFor="message">Caption</label>
-      <input
-        type="text"
-        id="message"
-        onChange={handleChange}
-        value={formValues.message}
-        className="post-form-Message"
-      ></input>
+ 
       
-      <button type="submit">Post</button>
+      <button type="submit" onClick={handleSubmit} >Post</button>
   </div>
   )
   }

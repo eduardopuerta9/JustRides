@@ -16,7 +16,8 @@ const Feed= ({ user})=> {
   let {user_id}= useParams()
   const getPostInfo = async () => {
     let res = await axios.get(`http://localhost:3001/post`)
-    setPosts(res.data[0])
+    setPosts(res.data)
+    
 
     
   }
@@ -42,28 +43,31 @@ const getComments = async () => {
     getPostInfo()
   }, [loaded])
 
-  return user ?  (
-    <div className='Posts'>
-
-        <div className='postUserName'>
-          
-        <h2>{posts.userName}</h2><h3>{posts.message}</h3>
+  return user ? (
+    <div className="Posts">
+      {posts.map((post) => (
+        <div key={post.id}>
+          <div className="postUserName">
+            <h2>{post.userName}</h2>
+            <h3>{post.message}</h3>
+          </div>
+          <div className="postImage">
+            <img src={post.image} />
+          </div>
+          <div className="postStart">
+            <h3>Starting: {post.startLocation}</h3>
+          </div>
+          <div className="postEnd">
+            <h3>Ending: {post.endLocation}</h3>
+          </div>
+          <div className="postDistance">
+            <h3> Distance: {post.distance}</h3>
+          </div>
+          <div className="postTime">
+            <h3>{post.Time}</h3>
+          </div>
         </div>
-        <div className='postImage'>
-        <img src={posts.image} />
-        </div>
-        <div className='postStart'>
-        <h3>Starting: {posts.startLocation}</h3>
-        </div>
-        <div className='postEnd'>
-        <h3>Ending: {posts.endLocation}</h3>
-        </div>
-        <div className='postDistance'>
-        <h3> Distance: {posts.distance}</h3>
-        </div>
-        <div className='postTime'>
-        <h3>{posts.Time}</h3>
-        </div>
+      ))}
         <div className='comments'>
     </div>
     <div className='reviewForm'>
@@ -73,7 +77,7 @@ const getComments = async () => {
       userName={userName}
       getUserName={getUserName}
       setLoaded={setLoaded}
-    />
+      />
   </div>
   <div className="reviews-section">
     {comments.map((comment) => (
@@ -81,29 +85,6 @@ const getComments = async () => {
         <h3 className='name'>{comment.userName}'s Review</h3>
         <div className='rr'>
           <h3 className='thing actualReview'>{comment.comment}</h3>
-          
-
-
-          {/* {comment.userName === userDetails.userName && !displayUpdate && (
-            <div className="userButtons">
-              <button className="reviewButton" onClick={() => deleteReview(comment)}>
-                Delete
-              </button>
-              <button onClick={() => displayUpdateForm(comment.id)} className="reviewButton">
-                Update
-              </button>
-            </div>
-          )}
-          {displayUpdate && comment.id === commentId && (
-            <UpdateCommentForm
-              userDetails={userDetails}
-              comments={comments}
-              commentId={commentId}
-              setLoaded={setLoaded}
-              
-              comment={comment.comment}
-            />
-          )} */}
         </div>
       </div>
     ))}
