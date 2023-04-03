@@ -17,7 +17,10 @@ const Feed = ({ user }) => {
     const res = await axios.get(`http://localhost:3001/post`)
     setPosts(res.data)
   }
-
+  const deletePost = async (post) => {
+    await Client.delete(`http://localhost:3001/post/${post.id}`)
+    setPosts(posts.filter((c) => c.id !== post.id))
+  }
   const getUserName = async () => {
     const userName = await axios.get(
       `http://localhost:3001/auth/${user.id}/details`
@@ -52,6 +55,9 @@ const Feed = ({ user }) => {
           </div>
           <div className="postTime">
             <h3>{post.Time}</h3>
+            {post.userId === user.id && (
+              <button onClick={() => deletePost(post)}>Delete</button>
+            )}
           </div>
           <div className="commentForm">
             <CommentForm
