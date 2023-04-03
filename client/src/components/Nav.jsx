@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-
+import '../App.css'
 const Nav = ({ user, handleLogout, checkToken }) => {
   let userOptions
   return user ? (

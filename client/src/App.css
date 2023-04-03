@@ -225,3 +225,247 @@ button {
 button:hover {
   background-color: #38a1f0;
 }
+.Nav-Bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #242526;
+  color: white;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.link:hover {
+  opacity: 1;
+}
+
+.just-rides {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  margin-right: 0.25rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.rides {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.adminControls {
+  display: flex;
+  align-items: center;
+}
+
+#settings-icon {
+  margin-right: 0.25rem;
+  font-size: 1.5rem;
+}
+
+.admin {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.admin:hover {
+  opacity: 1;
+}
+
+/* Styles for the links when the user is not logged in */
+
+.Nav-Bar:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.Nav-Bar:last-child {
+  margin-left: auto;
+}
+
+.Nav-Bar:not(:last-child) .link {
+  margin-left: 0;
+}
+
+/* Styles for the active link */
+
+.link.active {
+  opacity: 1;
+  color: #0095f6;
+}
+
+/* Styles for the logo */
+
+.logo {
+  font-size: 2rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: white;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.logo:hover {
+  opacity: 1;
+}
+
+.logo span {
+  color: #0095f6;
+}
+.post-form-container {
+  background-color: #121212;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.post-form-image,
+.post-form-Message,
+#startLocation,
+#endLocation {
+  background-color: #1e1e1e;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.form-horizontal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.control-label {
+  display: none;
+}
+
+.button-destination {
+  background-color: #0095f6;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.map-container {
+  height: 300px;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+h1, h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+button[type="submit"] {
+  background-color: #0095f6;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #181818;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #282828;
+  border-radius: 4px;
+  padding: 40px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1),
+              0 2px 0 rgba(255, 255, 255, 0.1),
+              0 4px 0 rgba(255, 255, 255, 0.1),
+              0 8px 0 rgba(255, 255, 255, 0.1),
+              0 16px 0 rgba(255, 255, 255, 0.1);
+}
+
+.login-email-div,
+.login-password-div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.login-email-label,
+.login-password-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #dbdbdb;
+  margin-bottom: 5px;
+}
+
+.login-email-input,
+.login-password-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  background-color: #333333;
+  color: #dbdbdb;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  background-color: #0095f6;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

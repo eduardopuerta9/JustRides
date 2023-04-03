@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SignInUser } from '../services/Auth'
 
+import '../App.css'
 
 const Login = ({ setUser }) => {
   let navigate = useNavigate()

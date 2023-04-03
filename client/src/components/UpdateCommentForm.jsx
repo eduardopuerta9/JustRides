@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useParams } from 'react'
 import axios from 'axios'
 import Client from '../services/api'
 
@@ -26,6 +26,7 @@ const UpdateCommentForm = ({
     console.log(res)
 
     setComments(res.data)
+    console.log(post_id)
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
