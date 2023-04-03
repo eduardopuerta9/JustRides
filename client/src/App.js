@@ -15,7 +15,7 @@ import axios from 'axios'
 function App() {
   const [user, setUser] = useState(null)
   const [userInfo, setUserInfo] = useState({})
-  const [post, setPosts] = useState(null)
+  const [post, setPosts] = useState([])
   const [reviews, setReviews] = useState([])
 
   const handleLogout = () => {

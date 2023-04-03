@@ -8,6 +8,18 @@ const GetComments = async (req, res) => {
     throw error
   }
 }
+const FindCommentById = async (req, res) => {
+  try {
+    const postId = req.params.post_id
+    // const userId = req.params.user_id
+    const post = await Comment.findOne({
+      where: { id: postId }
+
+      // include: [{ model: User, where: { userId: user_id } }]
+    })
+    res.send(post)
+  } catch (error) {}
+}
 
 const CreateComment = async (req, res) => {
   try {
@@ -51,5 +63,6 @@ module.exports = {
   GetComments,
   CreateComment,
   UpdateComment,
-  DeleteComment
+  DeleteComment,
+  FindCommentById
 }

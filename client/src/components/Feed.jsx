@@ -15,7 +15,7 @@ const Feed= ({ user})=> {
   let { post_id } = useParams()
   let {user_id}= useParams()
   const getPostInfo = async () => {
-    let res = await axios.get(`http://localhost:3001/post`)
+    const res = await axios.get(`http://localhost:3001/post`)
     setPosts(res.data)
     
 
@@ -30,9 +30,17 @@ const getComments = async () => {
   setComments((comments.data).reverse())
   setLoaded(false)
   }
+  const getUserName = async () => {
+    const userName = await axios.get(
+      `http://localhost:3001/auth/${user.id}/details`
+    )
+    setUserName(userName.data.userName)
+    setUserDetails(userName.data)
+  }
   useEffect(()=> {
     // getUserName()
     getComments()
+    getUserName()
     getPostInfo()
   }, [loaded])
 
@@ -72,7 +80,7 @@ const getComments = async () => {
       setLoaded={setLoaded}
       />
   </div>
-  <div className="reviews-section">
+  <div className="comments-section">
     {comments.map((comment) => (
       <div key={comment.id} className="review">
         <h3 className='name'>{comment.userName}'s Review</h3>
