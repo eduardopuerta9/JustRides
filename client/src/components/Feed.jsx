@@ -63,7 +63,7 @@ const getComments = async () => {
       ))}
         <div className='comments'>
     </div>
-    <div className='reviewForm'>
+    <div className='commentForm'>
     <CommentForm
       post_id={post_id}
       user={user}

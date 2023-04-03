@@ -15,7 +15,7 @@ import axios from 'axios'
 function App() {
   const [user, setUser] = useState(null)
   const [userInfo, setUserInfo] = useState({})
-  const [posts, setPosts] = useState([])
+  const [post, setPosts] = useState(null)
   const [reviews, setReviews] = useState([])
 
   const handleLogout = () => {
@@ -44,7 +44,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/feed" element={<Feed user={user} />} />
+          <Route path="/feed" element={<Feed user={user} post={post} />} />
           <Route path="/register" element={<Register />}></Route>
           <Route path="/login" element={<Login setUser={setUser} />}></Route>
           <Route path="/post/create" element={<MakePost user={user} />}></Route>

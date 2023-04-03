@@ -2,8 +2,8 @@ const { Comment } = require('../models')
 
 const GetComments = async (req, res) => {
   try {
-    const comments = await Comment.findAll()
-    res.send(comments)
+    const comment = await Comment.findAll()
+    res.send(comment)
   } catch (error) {
     throw error
   }
@@ -13,7 +13,8 @@ const CreateComment = async (req, res) => {
   try {
     const comment = await Comment.create({
       ...req.body,
-      postId: req.params.post_id
+      postId: req.params.post_id,
+      userId: req.params.user_id
     })
     res.send(comment)
   } catch (error) {
