@@ -27,12 +27,6 @@ const CommentForm = ({ post_id, user }) => {
     setDisplayUpdate(true)
   }
 
-  const updateComment = async (e, comment) => {
-    e.preventDefault()
-    const res = await Client.put(
-      `http://localhost:3001/comment/${comment.id}/update`
-    )
-  }
   const deleteComment = async (comment) => {
     await Client.delete(`http://localhost:3001/comment/${comment.id}/delete`)
     setComments(comments.filter((c) => c.id !== comment.id))
@@ -81,10 +75,11 @@ const CommentForm = ({ post_id, user }) => {
               )}
               {displayUpdate && comment.id === commentId && (
                 <UpdateCommentForm
-                  userDetails={userDetails}
+                  user={user}
                   comments={comments}
                   commentId={commentId}
                   setDisplayUpdate={setDisplayUpdate}
+                  comment={comment.comment}
                 />
               )}
             </div>

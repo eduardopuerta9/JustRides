@@ -41,9 +41,7 @@ const UpdateComment = async (req, res) => {
       { where: { id: req.params.comment_id }, returning: true }
     )
     res.send(comment)
-  } catch (error) {
-    throw error
-  }
+  } catch (error) {}
 }
 
 const DeleteComment = async (req, res) => {

@@ -4,12 +4,7 @@ const middleware = require('../middleware')
 
 router.get('/', controller.GetComments)
 router.post('/addcomment/:post_id/:user_id', controller.CreateComment)
-router.put(
-  '/:comment_id/update',
-  middleware.stripToken,
-  middleware.verifyToken,
-  controller.UpdateComment
-)
+router.put('/:comment_id/update', controller.UpdateComment)
 router.delete(
   '/:comment_id/delete',
   middleware.stripToken,

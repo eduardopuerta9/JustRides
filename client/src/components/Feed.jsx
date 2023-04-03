@@ -17,6 +17,7 @@ const Feed = ({ user }) => {
     const res = await axios.get(`http://localhost:3001/post`)
     setPosts(res.data)
   }
+
   const deletePost = async (post) => {
     await Client.delete(`http://localhost:3001/post/${post.id}`)
     setPosts(posts.filter((c) => c.id !== post.id))
