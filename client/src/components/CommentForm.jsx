@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Client from '../services/api'
 import { CreateComment } from '../services/PostServices'
+import UpdateCommentForm from './UpdateCommentForm'
 
 const CommentForm = ({ post_id, user }) => {
   const initialState = {
@@ -11,12 +12,26 @@ const CommentForm = ({ post_id, user }) => {
     userName: user.userName
   }
   const [comments, setComments] = useState([])
+  const [displayUpdate, setDisplayUpdate] = useState(false)
+  const [userDetails, setUserDetails] = useState({})
+  const [commentId, setCommentId] = useState(1)
   const getComments = async () => {
     const res = await axios.get(
       `http://localhost:3001/comment/${post_id}/comments`
     )
 
     setComments(res.data)
+  }
+  const displayUpdateForm = async (commentId) => {
+    setCommentId(commentId)
+    setDisplayUpdate(true)
+  }
+
+  const updateComment = async (e, comment) => {
+    e.preventDefault()
+    const res = await Client.put(
+      `http://localhost:3001/comment/${comment.id}/update`
+    )
   }
   const deleteComment = async (comment) => {
     await Client.delete(`http://localhost:3001/comment/${comment.id}/delete`)
@@ -56,8 +71,21 @@ const CommentForm = ({ post_id, user }) => {
             <div className="rr">
               <h3 className="thing actualReview">{comment.comment}</h3>
 
-              {comment.userId === user.id && (
-                <button onClick={() => deleteComment(comment)}>Delete</button>
+              {comment.userId === user.id && !displayUpdate && (
+                <div className="userButtons">
+                  <button onClick={() => deleteComment(comment)}>Delete</button>
+                  <button onClick={() => displayUpdateForm(comment.id)}>
+                    Update
+                  </button>
+                </div>
+              )}
+              {displayUpdate && comment.id === commentId && (
+                <UpdateCommentForm
+                  userDetails={userDetails}
+                  comments={comments}
+                  commentId={commentId}
+                  setDisplayUpdate={setDisplayUpdate}
+                />
               )}
             </div>
           </div>
