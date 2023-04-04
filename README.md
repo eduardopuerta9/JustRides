@@ -50,7 +50,16 @@
 ---
 
 ### **_Future Updates_**
+- [ ] Add a My Profile
+- [ ] Add Like Button
+- [ ] Add a follower and following count
+- [ ] Add a search bar to look for specific usernames
 
 ---
 
 ### **_Credits_**
+##### CSS Gradient: [Gradient](https://www.cssportal.com/css-gradient-generator/)
+##### Google Maps API: [Google Maps API](https://www.npmjs.com/package/@react-google-maps/api)
+##### Styling: [Styling](https://www.educative.io/blog/react-instagram-tutorial)
+##### React: [React](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_interactivity_filtering_conditional_rendering)
+
