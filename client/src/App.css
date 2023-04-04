@@ -13,8 +13,10 @@
 }
 /* Posts container */
 body {
-  background: #0F0B33;
-background: linear-gradient(to right, #0F0B33 0%, #8375FF 100%);
+  background: #000000;
+background: linear-gradient(to right, #000000 0%, #694C5C 50%, #090D47 100%);
+
+
 
   
   color: #fff;
