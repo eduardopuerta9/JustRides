@@ -148,7 +148,7 @@ const MakePost = ({ user }) => {
               onClick={calculateRoute}
             >
               {' '}
-              BIKE
+              CALCULATE
             </button>
           </div>
           <GoogleMap
@@ -167,10 +167,11 @@ const MakePost = ({ user }) => {
           <h3>Duration: {duration}</h3>
         </div>
       </div>
-
-      <button type="submit" onClick={handleSubmit}>
-        Post
-      </button>
+      <div className="col-xs-offset-2 col-xs-10">
+        <button type="submit" onClick={handleSubmit}>
+          SHARE
+        </button>
+      </div>
     </div>
   )
 }

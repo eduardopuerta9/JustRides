@@ -48,17 +48,19 @@ const Feed = ({ user }) => {
             <img src={post.image} />
           </div>
           <div className="postUserName">
-            <h2>{post.userName}</h2>
-            <h3>{post.message}</h3>
+            <h2 style={{ fontStyle: 'italic' }}>
+              <strong>{post.userName}</strong>
+            </h2>
+            <h2>{post.message}</h2>
           </div>
           <div className="postStart">
-            <h3>Starting: {post.startLocation}</h3>
+            <h4>Starting: {post.startLocation}</h4>
           </div>
           <div className="postEnd">
-            <h3>Ending: {post.endLocation}</h3>
+            <h4>Ending: {post.endLocation}</h4>
           </div>
           <div className="postDistance">
-            <h3> Distance: {post.distance}</h3>
+            <h4> Distance: {post.distance}</h4>
           </div>
           <div className="postTime">
             <h3>{post.Time}</h3>

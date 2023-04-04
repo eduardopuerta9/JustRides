@@ -3,7 +3,9 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #181818;
+  background-image: url('https://img.freepik.com/premium-vector/silhouette-cycling-bicycle-vector-illustration_40382-360.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .login-form {

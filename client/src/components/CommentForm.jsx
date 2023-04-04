@@ -90,7 +90,7 @@ const CommentForm = ({ post_id, user }) => {
       <form className="form" onSubmit={handleSubmit}>
         <textarea
           id="comment"
-          cols="50"
+          cols="40"
           rows="2"
           onChange={handleChange}
           value={formValues.comment}
