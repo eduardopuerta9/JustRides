@@ -17,7 +17,8 @@ const Feed = ({ user }) => {
   let { user_id } = useParams()
   const getPostInfo = async () => {
     const res = await axios.get(`http://localhost:3001/post`)
-    setPosts(res.data)
+    const reversedPosts = res.data.reverse()
+    setPosts(reversedPosts)
   }
 
   const deletePost = async (post) => {

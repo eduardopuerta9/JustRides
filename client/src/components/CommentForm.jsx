@@ -61,7 +61,7 @@ const CommentForm = ({ post_id, user }) => {
       <div className="comments-section">
         {comments.map((comment) => (
           <div key={comment.id} className="review">
-            <h3 className="name">{comment.userName}'s Review</h3>
+            <h3 className="name">{comment.userName}</h3>
             <div className="rr">
               <h3 className="thing actualReview">{comment.comment}</h3>
 
@@ -90,8 +90,8 @@ const CommentForm = ({ post_id, user }) => {
       <form className="form" onSubmit={handleSubmit}>
         <textarea
           id="comment"
-          cols="90"
-          rows="3"
+          cols="50"
+          rows="2"
           onChange={handleChange}
           value={formValues.comment}
           placeholder="Comment here..."
