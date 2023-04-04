@@ -2,106 +2,52 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #242526;
-  color: white;
+  height: 60px;
+  background-color: #000000;
+  border-bottom: 1px solid #000000;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
 }
 
-.links {
+.Nav-Bar .links {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 2000px;
 }
 
-.link {
-  margin-left: 1rem;
-  font-size: 1.2rem;
-  font-weight: 600;
+.Nav-Bar .link {
   text-decoration: none;
-  color: white;
-  opacity: 0.8;
-  transition: opacity 0.2s ease-in-out;
+  font-size: 16px;
+  color: #ffffff;
+  margin-right: 20px;
+  transition: all 0.3s ease-in-out;
 }
 
-.link:hover {
-  opacity: 1;
+.Nav-Bar .link:hover {
+  color: #007bff;
 }
 
-.just-rides {
+.Nav-Bar .title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  color: #fff9f9;
+}
+
+.Nav-Bar .adminControls {
   display: flex;
+  justify-content: center;
   align-items: center;
+  font-size: 16px;
+  color: #333;
+  transition: all 0.3s ease-in-out;
 }
 
-.title {
-  margin-right: 0.25rem;
-  font-size: 1.8rem;
-  font-weight: 600;
+.Nav-Bar .adminControls:hover {
+  color: #007bff;
 }
 
-.rides {
-  font-size: 1.8rem;
-  font-weight: 400;
-}
-
-.adminControls {
-  display: flex;
-  align-items: center;
-}
-
-#settings-icon {
-  margin-right: 0.25rem;
-  font-size: 1.5rem;
-}
-
-.admin {
-  font-size: 1.2rem;
-  font-weight: 600;
-  text-decoration: none;
-  color: white;
-  opacity: 0.8;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.admin:hover {
-  opacity: 1;
-}
-
-/* Styles for the links when the user is not logged in */
-
-.Nav-Bar:not(:last-child) {
-  margin-right: 1rem;
-}
-
-.Nav-Bar:last-child {
-  margin-left: auto;
-}
-
-.Nav-Bar:not(:last-child) .link {
-  margin-left: 0;
-}
-
-/* Styles for the active link */
-
-.link.active {
-  opacity: 1;
-  color: #0095f6;
-}
-
-/* Styles for the logo */
-
-.logo {
-  font-size: 2rem;
-  font-weight: 800;
-  text-decoration: none;
-  color: rgb(168, 18, 18);
-  opacity: 0.8;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.logo:hover {
-  opacity: 1;
-}
-
-.logo span {
-  color: #0095f6;
+.Nav-Bar #settings-icon {
+  margin-right: 10px;
 }

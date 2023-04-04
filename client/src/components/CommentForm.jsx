@@ -3,6 +3,7 @@ import axios from 'axios'
 import Client from '../services/api'
 import { CreateComment } from '../services/PostServices'
 import UpdateCommentForm from './UpdateCommentForm'
+import '../styles/createcomment.css'
 
 const CommentForm = ({ post_id, user }) => {
   const initialState = {
@@ -61,7 +62,13 @@ const CommentForm = ({ post_id, user }) => {
       <div className="comments-section">
         {comments.map((comment) => (
           <div key={comment.id} className="review">
-            <h3 className="name">{comment.userName}</h3>
+            <h3
+              className="name"
+              style={{ fontWeight: 'bold', fontStyle: 'italic' }}
+            >
+              {comment.userName}
+            </h3>
+
             <div className="rr">
               <h3 className="thing actualReview">{comment.comment}</h3>
 

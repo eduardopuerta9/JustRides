@@ -6,6 +6,7 @@ const Nav = ({ user, handleLogout, checkToken }) => {
   return user ? (
     <nav className="Nav-Bar">
       <div className="links">
+        <h1 className="title">JUST RIDES</h1>
         <NavLink to="/feed" className="Nav-Bar link">
           FEED
         </NavLink>
@@ -16,10 +17,7 @@ const Nav = ({ user, handleLogout, checkToken }) => {
           LOG OUT
         </NavLink>
       </div>
-      <div className="just-rides">
-        <h1 className="title">JUST</h1>
-        <h1 className="rides">RIDES</h1>
-      </div>
+      <div className="just-rides"></div>
       <div>
         {user.id === 1 && (
           <NavLink to="/admincontrols" className="Nav-Bar link">

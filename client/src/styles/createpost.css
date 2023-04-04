@@ -1,20 +1,25 @@
 .post-form-container {
   background-color: #121212;
-  color: #fff;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+  height: 100vh;
+  background-image: url(https://c4.wallpaperflare.com/wallpaper/814/464/60/anime-bike-city-girl-wallpaper-preview.jpg);
+  background-size: cover;
+  background-position: center;
+
 }
 
 .post-form-image,
 .post-form-Message,
 #startLocation,
 #endLocation {
-  background-color: #1e1e1e;
+  background-color: #ffffff;
   border: none;
   border-radius: 5px;
-  color: #fff;
+  color: #000000;
   font-size: 1.2rem;
   margin-bottom: 1rem;
   padding: 0.5rem;
@@ -41,7 +46,7 @@
   background-color: #0095f6;
   border: none;
   border-radius: 5px;
-  color: #fff;
+  color: #000000;
   cursor: pointer;
   font-size: 1.2rem;
   margin-top: 1rem;
@@ -55,8 +60,12 @@
   margin-top: 1rem;
 }
 
-h1, h3 {
-  color: #fff;
+h1 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+h3 {
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
@@ -64,7 +73,7 @@ button[type="submit"] {
   background-color: #0095f6;
   border: none;
   border-radius: 5px;
-  color: #fff;
+  color: #ffffff;
   cursor: pointer;
   font-size: 1.2rem;
   margin-top: 1rem;
