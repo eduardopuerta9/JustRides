@@ -33,6 +33,16 @@
 ---
 
 ### **_Screenshots_**
+###### Home
+<img width="500" alt="Screen Shot 2023-04-04 at 9 53 48 AM" src="https://user-images.githubusercontent.com/122240360/229815085-c574f513-ab10-44d5-be06-e79c16c95f57.png">
+
+
+###### Feed
+<img width="500" alt="Screen Shot 2023-04-04 at 9 51 48 AM" src="https://user-images.githubusercontent.com/122240360/229814705-fa4fa5c1-d479-4a92-a478-3198dd264650.png">
+
+###### Create A Post
+<img width="500" alt="Screen Shot 2023-04-04 at 9 55 13 AM" src="https://user-images.githubusercontent.com/122240360/229815528-5ec24bed-49a2-4f94-a86c-b28a2aa1ecd9.png">
+
 
 
 
@@ -40,7 +50,16 @@
 ---
 
 ### **_Future Updates_**
+- [ ] Add a My Profile
+- [ ] Add Like Button
+- [ ] Add a follower and following count
+- [ ] Add a search bar to look for specific usernames
 
 ---
 
 ### **_Credits_**
+##### CSS Gradient: [Gradient](https://www.cssportal.com/css-gradient-generator/)
+##### Google Maps API: [Google Maps API](https://www.npmjs.com/package/@react-google-maps/api)
+##### Styling: [Styling](https://www.educative.io/blog/react-instagram-tutorial)
+##### React: [React](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_interactivity_filtering_conditional_rendering)
+
