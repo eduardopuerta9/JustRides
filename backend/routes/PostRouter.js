@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const controller = require('../../controllers/PostController')
+const controller = require('../controllers/PostController')
 const middleware = require('../middleware')
 
 router.get('/', controller.GetPosts)

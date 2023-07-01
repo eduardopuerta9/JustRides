@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const controller = require('../../controllers/CommentController')
+const controller = require('../controllers/CommentController')
 const middleware = require('../middleware')
 
 router.get('/', controller.GetComments)
