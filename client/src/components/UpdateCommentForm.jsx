@@ -22,7 +22,7 @@ const UpdateCommentForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault()
     await Client.put(
-      `http://localhost:3001/comment/${commentId}/update`,
+      `https://just-rides-app-api.onrender.com/${commentId}/update`,
       reviewState
     )
     console.log('1')
