@@ -30,7 +30,7 @@ const Register = () => {
       password: formValues.password
     })
     setFormValues(initialState)
-    navigate('/login')
+    navigate('/feed')
   }
   return (
     <div className="register-form">
