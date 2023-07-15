@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Client from '../services/api'
-import { CreateComment } from '../services/PostServices'
+
 import UpdateCommentForm from './UpdateCommentForm'
 import '../styles/createcomment.css'
 
@@ -14,7 +14,7 @@ const CommentForm = ({ post_id, user }) => {
   }
   const [comments, setComments] = useState([])
   const [displayUpdate, setDisplayUpdate] = useState(false)
-  const [userDetails, setUserDetails] = useState({})
+
   const [commentId, setCommentId] = useState(1)
   const getComments = async () => {
     const res = await axios.get(

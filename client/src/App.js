@@ -11,12 +11,9 @@ import { GetPosts } from './services/PostServices'
 import MakePost from './components/CreatePost'
 import { Routes, Route } from 'react-router-dom'
 
-import axios from 'axios'
 function App() {
   const [user, setUser] = useState(null)
-  const [userInfo, setUserInfo] = useState({})
   const [post, setPosts] = useState([])
-  const [reviews, setReviews] = useState([])
 
   const handleLogout = () => {
     setUser(null)
