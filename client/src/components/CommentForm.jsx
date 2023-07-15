@@ -21,7 +21,7 @@ const CommentForm = ({ post_id, user }) => {
       `https://just-rides-app-api.onrender.com/comment/${post_id}/comments`
     )
 
-    setComments(res.data)
+    setComments(res.data
   }
   const displayUpdateForm = async (commentId) => {
     setCommentId(commentId)
