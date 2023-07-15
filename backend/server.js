@@ -15,6 +15,9 @@ app.use((req, res, next) => {
   next()
 })
 
+app.use(express.static('public', { type: 'application/javascript' }))
+// ... rest of your server code ...
+
 app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
