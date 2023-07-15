@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-const BASE_URL = `https://just-rides-app-api.onrender.com`
+const BASE_URL = `https://just-rides-app-api.onrender.com/api`
 
 const Client = Axios.create({ baseURL: BASE_URL })
 
