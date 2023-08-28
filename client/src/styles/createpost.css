@@ -1,14 +1,11 @@
 .post-form-container {
-  background-color: #121212;
+  background: linear-gradient(to right, #000000 0%, #694C5C 50%, #090D47 100%);;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
   height: 100vh;
-  background-image: url(https://c4.wallpaperflare.com/wallpaper/814/464/60/anime-bike-city-girl-wallpaper-preview.jpg);
-  background-size: cover;
-  background-position: center;
 
 }
 
