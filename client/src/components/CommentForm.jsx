@@ -18,7 +18,7 @@ const CommentForm = ({ post_id, user }) => {
   const [commentId, setCommentId] = useState(1)
   const getComments = async () => {
     const res = await axios.get(
-      `https://just-rides-app-api.onrender.com/comment/${post_id}/comments`
+      `http://localhost:3001/comment/${post_id}/comments`
     )
 
     setComments(res.data)
@@ -29,9 +29,7 @@ const CommentForm = ({ post_id, user }) => {
   }
 
   const deleteComment = async (comment) => {
-    await Client.delete(
-      `https://just-rides-app-api.onrender.com/comment/${comment.id}/delete`
-    )
+    await Client.delete(`http://localhost:3001/comment/${comment.id}/delete`)
     setComments(comments.filter((c) => c.id !== comment.id))
   }
   const [formValues, setFormState] = useState(initialState)
@@ -48,7 +46,7 @@ const CommentForm = ({ post_id, user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const res = await Client.post(
-      `https://just-rides-app-api.onrender.com/comment/addcomment/${post_id}/${user.id}`,
+      `http://localhost:3001/comment/addcomment/${post_id}/${user.id}`,
       formValues
     )
     setComments([...comments, res.data])

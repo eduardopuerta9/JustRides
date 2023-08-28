@@ -16,20 +16,18 @@ const Feed = ({ user }) => {
   let { post_id } = useParams()
   let { user_id } = useParams()
   const getPostInfo = async () => {
-    const res = await axios.get(`https://just-rides-app-api.onrender.com/post`)
+    const res = await axios.get(`http://localhost:3001/post`)
     const reversedPosts = res.data.reverse()
     setPosts(reversedPosts)
   }
 
   const deletePost = async (post) => {
-    await Client.delete(
-      `https://just-rides-app-api.onrender.com/post/${post.id}`
-    )
+    await Client.delete(`http://localhost:3001/post/${post.id}`)
     setPosts(posts.filter((c) => c.id !== post.id))
   }
   const getUserName = async () => {
     const userName = await axios.get(
-      `https://just-rides-app-api.onrender.com/auth/${user.id}/details`
+      `http://localhost:3001/auth/${user.id}/details`
     )
     setUserName(userName.data.userName)
     setUserDetails(userName.data)
