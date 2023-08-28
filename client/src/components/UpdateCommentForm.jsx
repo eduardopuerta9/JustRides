@@ -21,7 +21,10 @@ const UpdateCommentForm = ({
   const [loaded, setLoaded] = useState(false)
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await Client.put(`http://localhost:3001/${commentId}/update`, reviewState)
+    await Client.put(
+      `http://localhost:3001/comment/${commentId}/update`,
+      reviewState
+    )
     console.log('1')
     setReviewState(initialState)
     console.log('2')
