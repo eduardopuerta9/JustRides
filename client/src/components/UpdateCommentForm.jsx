@@ -52,7 +52,7 @@ const UpdateCommentForm = ({
           placeholder="Comment here..."
         ></textarea>
         <button type="submit" onClick={handleSubmit}>
-          Update
+          Edit
         </button>
       </form>
     </div>

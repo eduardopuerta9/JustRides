@@ -76,7 +76,7 @@ const CommentForm = ({ post_id, user }) => {
                 <div className="userButtons">
                   <button onClick={() => deleteComment(comment)}>Delete</button>
                   <button onClick={() => displayUpdateForm(comment.id)}>
-                    Update
+                    Edit
                   </button>
                 </div>
               )}
