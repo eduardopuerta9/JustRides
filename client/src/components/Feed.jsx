@@ -16,9 +16,14 @@ const Feed = ({ user }) => {
   let { post_id } = useParams()
   let { user_id } = useParams()
   const getPostInfo = async () => {
-    const res = await axios.get(`${process.env.REACT_APP_SERVERURL}/post`)
-    const reversedPosts = res.data.reverse()
-    setPosts(reversedPosts)
+    try {
+      const res = await axios.get(`${process.env.REACT_APP_SERVERURL}/post`)
+      const reversedPosts = res.data.reverse()
+      setPosts(reversedPosts)
+    } catch (error) {
+      console.error('Error fetching post information:', error)
+      // Handle the error, such as showing an error message to the user
+    }
   }
 
   const deletePost = async (post) => {
