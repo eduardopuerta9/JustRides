@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-const BASE_URL = `http://localhost:3001`
+const BASE_URL = `${process.env.REACT_APP_SERVERURL}`
 
 const Client = Axios.create({ baseURL: BASE_URL })
 

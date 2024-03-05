@@ -16,18 +16,18 @@ const Feed = ({ user }) => {
   let { post_id } = useParams()
   let { user_id } = useParams()
   const getPostInfo = async () => {
-    const res = await axios.get(`http://localhost:3001/post`)
+    const res = await axios.get(`${process.env.REACT_APP_SERVERURL}/post`)
     const reversedPosts = res.data.reverse()
     setPosts(reversedPosts)
   }
 
   const deletePost = async (post) => {
-    await Client.delete(`http://localhost:3001/post/${post.id}`)
+    await Client.delete(`${process.env.REACT_APP_SERVERURL}/post/${post.id}`)
     setPosts(posts.filter((c) => c.id !== post.id))
   }
   const getUserName = async () => {
     const userName = await axios.get(
-      `http://localhost:3001/auth/${user.id}/details`
+      `${process.env.REACT_APP_SERVERURL}/auth/${user.id}/details`
     )
     setUserName(userName.data.userName)
     setUserDetails(userName.data)
@@ -73,7 +73,6 @@ const Feed = ({ user }) => {
               post_id={parseInt(post.id)}
               user={user}
               userName={userName}
-              // getUserName={getUserName}
               setLoaded={setLoaded}
             />
           </div>

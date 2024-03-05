@@ -34,7 +34,10 @@ const MakePost = ({ user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await axios.post(`http://localhost:3001/post/create/${user.id}`, formValues)
+    await axios.post(
+      `${process.env.REACT_APP_SERVERURL}/post/create/${user.id}`,
+      formValues
+    )
 
     setFormState(initialState)
     navigate('/feed')

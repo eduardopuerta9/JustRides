@@ -18,7 +18,7 @@ const CommentForm = ({ post_id, user }) => {
   const [commentId, setCommentId] = useState(1)
   const getComments = async () => {
     const res = await axios.get(
-      `http://localhost:3001/comment/${post_id}/comments`
+      `${process.env.REACT_APP_SERVERURL}/comment/${post_id}/comments`
     )
 
     setComments(res.data)
@@ -29,7 +29,9 @@ const CommentForm = ({ post_id, user }) => {
   }
 
   const deleteComment = async (comment) => {
-    await Client.delete(`http://localhost:3001/comment/${comment.id}/delete`)
+    await Client.delete(
+      `${process.env.REACT_APP_SERVERURL}/comment/${comment.id}/delete`
+    )
     setComments(comments.filter((c) => c.id !== comment.id))
   }
   const [formValues, setFormState] = useState(initialState)
@@ -46,7 +48,7 @@ const CommentForm = ({ post_id, user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const res = await Client.post(
-      `http://localhost:3001/comment/addcomment/${post_id}/${user.id}`,
+      `${process.env.REACT_APP_SERVERURL}/comment/addcomment/${post_id}/${user.id}`,
       formValues
     )
     setComments([...comments, res.data])

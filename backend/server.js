@@ -12,7 +12,7 @@ const corsOptions = {
 }
 const app = express()
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT ?? 8000
 
 // ... rest of your server code ...
 

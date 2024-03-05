@@ -22,7 +22,7 @@ const UpdateCommentForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault()
     await Client.put(
-      `http://localhost:3001/comment/${commentId}/update`,
+      `${process.env.REACT_APP_SERVERURL}/${commentId}/update`,
       reviewState
     )
     console.log('1')
